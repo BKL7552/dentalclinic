@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter/Modifier un Patient</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap'>
+    
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+          <div class="image-text">
+            <span class="image">
+              <img src="/images/logo.png" alt="">
+            </span>
+      
+            <div class="text logo-text">
+              <span class="name">Clinic dentaire </span>
+              
+            </div>
+          </div>
+      
+          <i class='bx bx-chevron-right toggle'></i>
+        </header>
+      
+        <div class="menu-bar">
+          <div class="menu">
+      
+            <ul class="menu-links">
+              <li class="nav-link">
+                <a href="/secretary/dashboard">
+                  <i class='bx bx-home-alt icon'></i>
+                  <span class="text nav-text">Dashboard</span>
+                </a>
+              </li>
+      
+              <li class="nav-link">
+                <a href="/secretary/patients">
+                    <i class='bx bxs-user icon'></i>
+                  <span class="text nav-text">Patients</span>
+                </a>
+              </li>
+      
+              <li class="nav-link">
+                <a href="/secretary/appointments">
+                    <i class='bx bxs-calendar icon'></i>
+                    <span class="text nav-text">Rendez-vous</span>
+                </a>
+              </li>
+      
+              <li class="nav-link">
+                <a href="#">
+                    <i class="fas fa-file-invoice-dollar icon"></i>
+                  <span class="text nav-text">Factures</span>
+                </a>
+              </li>
+      
+            </ul>
+          </div>
+      
+          <div class="bottom-content">
+            <li class="">
+              <a href="#" onclick="document.getElementById('logout-form').submit()">
+                  <i class='bx bx-log-out icon'></i>
+                  <span class="text nav-text">Deconnexion</span>
+              </a>
+              <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+              </form>
+            </li>
+      
+            <li class="mode">
+              <div class="sun-moon">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+              </div>
+              <span class="mode-text text">Dark mode</span>
+      
+              <div class="toggle-switch">
+                <span class="switch"></span>
+              </div>
+            </li>
+      
+          </div>
+        </div>
+      
+    </nav>
+
+    <section class="home">
+        <div class="text">
+            <div class="form-container">
+                <h1 th:text="${patient.id} ? 'Modifier un Patient' : 'Ajouter un Patient'"></h1>
+                <form th:action="@{/patients/save}" th:object="${patient}" method="post">
+                    <input type="hidden" th:field="*{id}" />
+                    <div class="form-group">
+                        <label for="lastName">Nom</label>
+                        <input type="text" id="lastName" th:field="*{lastName}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">Prénom</label>
+                        <input type="text" id="firstName" th:field="*{firstName}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Téléphone</label>
+                        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" th:field="*{email}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date de Naissance</label>
+                        <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts JavaScript -->
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

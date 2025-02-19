@@ -1,0 +1,48 @@
+HELP.md
+target/
+/*.jar
+/*.war
+/*.log
+*.pem
+*.crt
+*.key
+.env
+src/main/resources/application.properties
+src/main/resources/application-dev.properties
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Docker ###
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+/docker/data/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
